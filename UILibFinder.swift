@@ -1,9 +1,8 @@
 //
 //  UILibUtil.swift
-//  letSing
 //
 //  Created by Mac on 2019/6/24.
-//  Copyright © 2019 rcshow. All rights reserved.
+//  Copyright © 2019  All rights reserved.
 //
 
 import Foundation
