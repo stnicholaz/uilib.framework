@@ -1,0 +1,6 @@
+framework module uilib {
+  umbrella header "uilib.h"
+
+  export *
+  module * { export * }
+}
