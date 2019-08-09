@@ -11,6 +11,47 @@
 Uilib是到力于解决iOS开发过程中界面布局的问题，即使使用原生或autolayout或masonry库，仍然无法提高布局效率、灵活性、可读性、可维护性等，由此，uilib应运而生，当然，作者秉承简单易用的特点，uilib无法做做像Android界面布局那般强大，但uilib使用xml格式来配置UI, 使用原生UI控件，可扩展自定义控件，修改UI后不像修改代码后那样需要再次编译代码，从而提升了开发效率、可直接在OC和Swift中使用等等。相信足以为您节省界面开发的大部份时间，提高可维护性。
 但是目前还无法开源，因为代码还有很多需要优化，等我有空把代码重构之后再开源出来，在这之前，有问题可以直接联系我stnicholas@qq.com
 
+使用步骤：
+1.下载uilib.framework和main.bundle添加到项目工程中
+2.AppDelegate中初始化
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //UILib初始化并绑定bundle文件，内含ui目录
+    [UILibManager setBundleName:@"main.bundle"];
+}
+3.BaseViewController继承UILibViewController或View继承UILibFragment
+
+@interface CountryViewController : UILibViewController
+//...
+@end
+
+@implementation CountryViewController
+
+UI_NAME(viewcontroller/CountryViewController)
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.tableView = UI_TABLEVIEW(tableview);
+}
+@end
+
+//View
+@interface SignInFragment : UILibFragment
+//...
+@end
+
+@implementation SignInFragment
+
+UI_NAME(fragment/SignInFragment)
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.tableView = UI_TABLEVIEW(tableview);
+}
+@end
+
 功能：
 1.界面布局：目前支持水平线性布局(horlayout)、垂直线性布局(verlayout)、相对布局(rellayout)、流式布局(flowlayout)
 2.样式配置:支持在xml文件中直接配置控件通用属性，如字体、背景图、背景色、圆角、边框等，以及控件特有的如UIImageView的src、UIButton的image、TextField的placeholder/inputType等等
